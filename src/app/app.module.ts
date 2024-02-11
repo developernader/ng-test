@@ -13,6 +13,7 @@ import { JokesPipe } from './jokes.pipe';
 import { HeroSearchPipe } from './hero-search.pipe';
 import { YoungHeroDirective } from './directives/young-hero.directive';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeroDropdownDirective } from './directives/hero-dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     JokesPipe,
     HeroSearchPipe,
     YoungHeroDirective,
+    HeroDropdownDirective,
     
   ],
   imports: [

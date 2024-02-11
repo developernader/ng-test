@@ -8,33 +8,15 @@
   <input type="text" class="form-control" />
 </div>
 
-<!-- <div class="mt-2">
-  <span>gender:</span>
-  <select #genderEl class="form-control">
-    <option [ngValue]="'male'">male</option>
-    <option [ngValue]="'female'">female</option>
-  </select>
-</div> -->
-
 <div class="dropdown">
-  <button
-    class="btn btn-secondary dropdown-toggle"
-    type="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu dropdown-menu-dark">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">{{gender}}</button>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-alabelledy="dropdownMenu2" appHeroDropdown >
     <li>
-      <a class="dropdown-item active" href="#" (click)="changeGender('male')"
-        >Male</a
-      >
+      <button class="dropdown-item" type="button" (click)="gender = 'male' ">Male</button>
     </li>
+    
     <li>
-      <a class="dropdown-item" href="#" (click)="changeGender('female')"
-        >Female</a
-      >
+      <button class="dropdown-item" type="button" (click)="gender = 'female' ">Female</button>
     </li>
   </ul>
 </div>
