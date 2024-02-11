@@ -1,0 +1,49 @@
+<div class="mt-2">
+  <span>Name:</span>
+  <input type="text" class="form-control mb-1" />
+</div>
+
+<div class="mt-2">
+  <span>Age:</span>
+  <input type="text" class="form-control" />
+</div>
+
+<!-- <div class="mt-2">
+  <span>gender:</span>
+  <select #genderEl class="form-control">
+    <option [ngValue]="'male'">male</option>
+    <option [ngValue]="'female'">female</option>
+  </select>
+</div> -->
+
+<div class="dropdown">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li>
+      <a class="dropdown-item active" href="#" (click)="changeGender('male')"
+        >Male</a
+      >
+    </li>
+    <li>
+      <a class="dropdown-item" href="#" (click)="changeGender('female')"
+        >Female</a
+      >
+    </li>
+  </ul>
+</div>
+
+<div class="mt-2">
+  <span>Email:</span>
+  <input type="text" class="form-control" />
+</div>
+
+<button class="btn btn-primary mt-2 mb-2" (click)="onAddNewHero()">
+  New Add
+</button>

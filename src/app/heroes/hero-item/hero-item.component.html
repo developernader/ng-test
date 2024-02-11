@@ -1,0 +1,25 @@
+<!-- <h3 class="mt-2">
+    {{ heroData.heroName | uppercase }} - {{ heroData.heroAge }}
+  </h3> -->
+
+<div class="card mt-2">
+  <ng-content></ng-content>
+
+  <div class="card-body">
+    <h5 class="card-title">
+      <span appYoungHero [age]="heroData.heroAge" [gender]="heroData.heroGender">
+        {{
+          heroData.heroName
+            | jokes : heroData.heroAge : "TEST PARAM"
+            | uppercase
+        }}
+      </span>
+      {{ title }} - {{ heroData.heroAge }}
+    </h5>
+    <!-- <p class="card-text">
+      With supporting text below as a natural lead-in to additional content.
+    </p> -->
+    <a href="#" class="btn btn-primary">Accept</a>
+    <button class="btn btn-danger ms-2">Reject</button>
+  </div>
+</div>

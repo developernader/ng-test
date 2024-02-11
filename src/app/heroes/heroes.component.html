@@ -1,0 +1,19 @@
+<div class="container justify-content-center">
+  <app-create-hero (heroAdded)="onHeroAdded($event)"></app-create-hero>
+
+  <input
+    type="text"
+    class="form-control mt-5"
+    placeholder="Search in heros.."
+    [(ngModel)]="searchText"
+  />
+
+  <app-hero-item
+    *ngFor="let item of herosList | heroSearch : searchText; let i = index"
+    [heroData]="item"
+  >
+    <h5 #titleEl class="card-header">Hero #{{ i + 1 }}</h5>
+  </app-hero-item>
+
+  <h1>{{ mainHero | async }}</h1>
+</div>

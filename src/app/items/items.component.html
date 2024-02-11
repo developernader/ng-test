@@ -1,0 +1,7 @@
+<p>items works!</p>
+
+<input type="text" #txtName/>
+ <button (click)="name = txtName.value">Send</button> 
+
+
+ <app-items-details [comingName]="name"></app-items-details> 
