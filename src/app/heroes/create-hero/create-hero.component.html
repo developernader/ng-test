@@ -1,31 +1,35 @@
-<div class="mt-2">
-  <span>Name:</span>
-  <input type="text" class="form-control mb-1" />
-</div>
-
-<div class="mt-2">
-  <span>Age:</span>
-  <input type="text" class="form-control" />
-</div>
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">{{gender}}</button>
-  <ul class="dropdown-menu dropdown-menu-dark" aria-alabelledy="dropdownMenu2" appHeroDropdown >
-    <li>
-      <button class="dropdown-item" type="button" (click)="gender = 'male' ">Male</button>
-    </li>
-    
-    <li>
-      <button class="dropdown-item" type="button" (click)="gender = 'female' ">Female</button>
-    </li>
-  </ul>
-</div>
-
-<div class="mt-2">
-  <span>Email:</span>
-  <input type="text" class="form-control" />
-</div>
-
-<button class="btn btn-primary mt-2 mb-2" (click)="onAddNewHero()">
-  New Add
-</button>
+<form [formGroup]="heroForm">
+  <div class="mt-2">
+    <span>Name:</span>
+    <input type="text" class="form-control mb-1" formControlName="heroName"/>
+  </div>
+  
+  <div class="mt-2">
+    <span>Age:</span>
+    <input type="text" class="form-control" formControlName="heroAge"/>
+  </div>
+  
+  <div class="mt-2">
+    <span>Email:</span>
+    <input type="text" class="form-control" formControlName="heroEmail"/>
+  </div>
+  
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+      <!-- {{gender}} -->
+      {{heroForm.value.gender}}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-alabelledy="dropdownMenu2" appHeroDropdown >
+      <li>
+        <button class="dropdown-item" type="button" (click)="changeGender('male')">Male</button>
+      </li>
+      
+      <li>
+        <button class="dropdown-item" type="button" (click)="changeGender('female')">Female</button>
+      </li>
+    </ul>
+  </div>
+  
+  <button class="btn btn-primary mt-2 mb-2" (click)="onAddNewHero()">New Add
+  </button>
+</form>
