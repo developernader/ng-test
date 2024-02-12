@@ -1,35 +1,36 @@
-<form [formGroup]="heroForm">
+<form [formGroup]="heroForm" (ngSubmit)="onAddNewHero">
   <div class="mt-2">
     <span>Name:</span>
-    <input type="text" class="form-control mb-1" formControlName="heroName"/>
+    <input type="text" class="form-control mb-1" formControlName="heroName" 
+    ngClass="{'invalidControl':heroForm.get('heroName').invalid}" />
   </div>
-  
+
   <div class="mt-2">
     <span>Age:</span>
-    <input type="text" class="form-control" formControlName="heroAge"/>
+    <input type="text" class="form-control" formControlName="heroAge" ngClass="{'invalidControl':heroForm.get('heroAge').invalid}" />
   </div>
-  
+
   <div class="mt-2">
     <span>Email:</span>
-    <input type="text" class="form-control" formControlName="heroEmail"/>
+    <input type="text" class="form-control" formControlName="heroEmail" ngClass="{'invalidControl':heroForm.get('heroEmail').invalid}" />
   </div>
-  
+
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
       <!-- {{gender}} -->
       {{heroForm.value.gender}}
     </button>
-    <ul class="dropdown-menu dropdown-menu-dark" aria-alabelledy="dropdownMenu2" appHeroDropdown >
+    <ul class="dropdown-menu dropdown-menu-dark" aria-alabelledy="dropdownMenu2" appHeroDropdown>
       <li>
         <button class="dropdown-item" type="button" (click)="changeGender('male')">Male</button>
       </li>
-      
+
       <li>
         <button class="dropdown-item" type="button" (click)="changeGender('female')">Female</button>
       </li>
     </ul>
   </div>
-  
-  <button class="btn btn-primary mt-2 mb-2" (click)="onAddNewHero()">New Add
+
+  <button type="submit" class="btn btn-primary mt-2 mb-2">New Add
   </button>
 </form>

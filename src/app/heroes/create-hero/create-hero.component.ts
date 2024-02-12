@@ -5,7 +5,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IHeroModel } from 'src/app/models/IHeroModel';
 
 @Component({
@@ -14,45 +14,43 @@ import { IHeroModel } from 'src/app/models/IHeroModel';
   styleUrls: ['./create-hero.component.css'],
 })
 export class CreateHeroComponent {
-  
-  heroForm!: FormGroup;
+
+  heroForm?: FormGroup;
 
   @Output('heroAdded') heroAdded = new EventEmitter<IHeroModel>();
   @ViewChild('genderEl') genderEl!: ElementRef;
-  // @ViewChild('nameInputEl') nameEl!: ElementRef;
-  // @Input() gender: string = 'male';
-
-  // age: number = 0;
-   //gender: string = 'male';
+ 
+constructor() {
+  this.formInit();
+}
 
   formInit() {
-
     this.heroForm = new FormGroup({
-      heroName: new FormControl(null),
-      heroAge: new FormControl(null),
-      heroEmail: new FormControl(null),
+      heroName: new FormControl(null, Validators.required),
+      heroAge: new FormControl(null,Validators.required),
+      heroEmail: new FormControl(null,[Validators.required,Validators.email]),
       heroGender: new FormControl('male')
     });
 
   }
 
   onAddNewHero() {
+    const hero: IHeroModel = {
+      heroName: this.heroName.value.heroName,
+      heroAge: this.heroAge.value.heroAge,
+      heroEmail: this.heroEmail.value.heroEmail,
+      heroGender: this.genderEl.nativeElement.value,
 
-    //const hero: IHeroModel = {
-    //heroName: this.nameEl.nativeElement.value,
-    //heroAge: this.age,
-    //heroGender: this.genderEl.nativeElement.value
-    //heroGender: this.gender
-    //};
+    };
+    this.heroAdded.emit(hero);
 
-    //this.heroAdded.emit(hero);
     //name='';
     //this.nameEl.nativeElement.value = '';
     //this.age = 0;
   }
 
   changeGender(gender: string) {
-this.heroForm.controls['heroGender'].setValue(gender);
+    this.heroForm.controls['heroGender'].setValue(gender);
   }
 
 }
