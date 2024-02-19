@@ -1,30 +1,32 @@
 <form [formGroup]="heroForm" (ngSubmit)="onAddNewHero">
-  
+
   <div formGroupName="heroInfo">
     <div class="mt-2">
       <span>Name:</span>
-      <input type="text" class="form-control mb-1" formControlName="heroName" ngClass="{'invalidControl':heroForm.get('.heroInfo.heroName').invalid && heroForm.get('.heroInfo.heroName').touched}" />
+      <input type="text" class="form-control mb-1" formControlName="heroName" [ngClass]="{'invalidControl':heroNameGetter?.invalid && heroNameGetter?.touched}" />
     </div>
-  
+
     <div class="mt-2">
       <span>Age:</span>
-      <input type="text" class="form-control" formControlName="heroAge" ngClass="{'invalidControl':heroForm.get('heroInfo.heroAge').invalid  && heroForm.get('heroInfo.heroAge').touched}" />
+      <input type="text" class="form-control" formControlName="heroAge" [ngClass]="{'invalidControl':heroAgeGetter?.invalid  && heroAgeGetter?.touched}" />
+
+      <span class="text-danger" *ngIf="heroAgeGetter?.errors?.['older']">You cannot kill darkseid with your age.</span>
     </div>
-  
+
     <div class="mt-2">
       <span>Email:</span>
-      <input type="text" class="form-control" formControlName="heroEmail" 
-      ngClass="{'invalidControl':heroForm.get('heroInfo.heroEmail')?.errors?.['required'] && heroForm.get('heroInfo.heroEmail').touched } " />
+      <input type="text" class="form-control" formControlName="heroEmail" [ngClass]="{'invalidControl':heroEmailGetter?.errors?.['required'] && heroEmailGetter?.touched }" />
       <span class="text-danger" *ngIf="heroForm.get('heroEmail')?.errors?.['email']">E-mail is invaled</span>
     </div>
-  
+
   </div>
+
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
       <!-- {{gender}} -->
       {{heroForm.value.gender}}
     </button>
-    
+
     <ul class="dropdown-menu dropdown-menu-dark" aria-alabelledy="dropdownMenu2" appHeroDropdown>
       <li>
         <button class="dropdown-item" type="button" (click)="changeGender('male')">Male</button>
@@ -34,6 +36,16 @@
         <button class="dropdown-item" type="button" (click)="changeGender('female')">Female</button>
       </li>
     </ul>
+  </div>
+
+  <div class="mt-2" formArrayName="heroSuitColor">
+    <span>Suit Colors: </span>
+    <button type="button" class="btn btn-link mb-1" (click)="addSuitColor()">+ Add Color</button>
+    <div class="mb-1" *ngFor="let item of heroColorsGeeter.controls ; let i = index">
+      <input type="text" class="form-control" [formControlName]="i" 
+      [ngClass]="{'invalidControl':heroColorsGeeter.controls[i].errors?.['required'] 
+      && heroColorsGeeter.controls[i].touched }">
+    </div>
   </div>
 
   <button type="submit" class="btn btn-primary mt-2 mb-2" [disabled]="!heroForm.valid">New Add</button>

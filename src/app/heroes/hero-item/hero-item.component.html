@@ -6,7 +6,7 @@
   <ng-content></ng-content>
 
   <div class="card-body">
-    <h5 class="card-title">
+    <h5 class="card-title">New hero added
       <span appYoungHero [age]="heroData.heroAge" [gender]="heroData.heroGender">
         {{
           heroData.heroName
@@ -19,7 +19,8 @@
     <!-- <p class="card-text">
       With supporting text below as a natural lead-in to additional content.
     </p> -->
-    <a href="#" class="btn btn-primary">Accept</a>
+    <p>{{heroData.heroColor.toString()}}</p>
+    <a href="#" class="btn btn-primary" (click)="acceptHero()">Accept</a>
     <button class="btn btn-danger ms-2">Reject</button>
   </div>
 </div>

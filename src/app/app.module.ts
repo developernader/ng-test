@@ -14,6 +14,9 @@ import { HeroSearchPipe } from './hero-search.pipe';
 import { YoungHeroDirective } from './directives/young-hero.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeroDropdownDirective } from './directives/hero-dropdown.directive';
+import { HeroService } from './services/hero.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,9 +36,11 @@ import { HeroDropdownDirective } from './directives/hero-dropdown.directive';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
