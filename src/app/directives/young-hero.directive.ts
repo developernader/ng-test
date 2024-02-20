@@ -7,7 +7,7 @@ export class YoungHeroDirective implements OnInit {
   constructor(private element: ElementRef, private redndrer: Renderer2) {}
   @Input() age!: number;
   @Input() gender!: string;
-
+  @Input() name!: string;
   ngOnInit() {
     if (this.age >= 50) {
       //this.element.nativeElement.style.color = 'blue';

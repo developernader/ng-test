@@ -1,26 +1,31 @@
 <!-- <h3 class="mt-2">
-    {{ heroData.heroName | uppercase }} - {{ heroData.heroAge }}
+    New hero addes {{ heroData.heroName | uppercase }} - {{ heroData.heroAge }}
   </h3> -->
 
-<div class="card mt-2">
-  <ng-content></ng-content>
+<div class="d-flex justify-content-center">
+  <div class="pt-2">
 
-  <div class="card-body">
-    <h5 class="card-title">New hero added
-      <span appYoungHero [age]="heroData.heroAge" [gender]="heroData.heroGender">
-        {{
-          heroData.heroName
+    <div class="card mt-2">
+      <ng-content></ng-content>
+
+      <div class="card-body">
+        <h5 class="card-title">New hero added
+          <span appYoungHero [age]="heroData.heroAge" [gender]="heroData.heroGender" [name]="heroData.heroName">
+            {{
+            heroData.heroName
             | jokes : heroData.heroAge : "TEST PARAM"
             | uppercase
-        }}
-      </span>
-      {{ title }} - {{ heroData.heroAge }}
-    </h5>
-    <!-- <p class="card-text">
-      With supporting text below as a natural lead-in to additional content.
-    </p> -->
-    <p>{{heroData.heroColor.toString()}}</p>
-    <a href="#" class="btn btn-primary" (click)="acceptHero()">Accept</a>
-    <button class="btn btn-danger ms-2">Reject</button>
+            }}
+          </span>
+          {{ title }} - {{ heroData.heroAge }}
+        </h5>
+
+
+        <p>{{heroData.heroColor.toString()}}</p>
+        <a href="#" class="btn btn-primary" (click)="acceptHero()">Accept</a>
+        <button class="btn btn-danger ms-2">Reject</button>
+      </div>
+    </div>
+
   </div>
 </div>

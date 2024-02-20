@@ -18,9 +18,10 @@ export class HeroesComponent implements OnInit {
     // this.herosList.push({ heroName: 'Yasser Ali Mohamed', heroAge: 10 });
   }
   ngOnInit(): void {
-    this.heroService.heroListChanged.subscribe(data => {
-      this.herosList = data as any;
-    })
+    // this.heroService.heroListChanged.subscribe(data => {
+    //   this.herosList = data as any;
+    // })
+    this.herosList = this.heroService.getHeros();
   }
   mainHero = new Observable((subs) => {
 

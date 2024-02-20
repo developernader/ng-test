@@ -1,12 +1,14 @@
-<div class="container justify-content-center">
+<div class="d-flex justify-content-center">
+  <div class="pt-2">
 
-  <app-create-hero></app-create-hero>
+    <!-- <app-create-hero></app-create-hero> -->
 
-  <input type="text" class="form-control mt-5" placeholder="Search in heros.." [(ngModel)]="searchText" />
+    <input type="text" class="form-control mt-5" placeholder="Search in heros.." [(ngModel)]="searchText" />
 
-  <app-hero-item *ngFor="let item of herosList | heroSearch : searchText; let i = index" [heroData]="item">
-    <h5 #titleEl class="card-header">Hero #{{ i + 1 }}</h5>
-  </app-hero-item>
+    <app-hero-item *ngFor="let item of herosList | heroSearch : searchText; let i = index" [heroData]="item">
+      <h5 #titleEl class="card-header">Hero #{{ i + 1 }}</h5>
+    </app-hero-item>
 
-  <h1>{{ mainHero | async }}</h1>
+    <h1>{{ mainHero | async }}</h1>
+  </div>
 </div>
