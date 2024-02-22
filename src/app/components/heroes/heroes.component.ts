@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { IHeroModel } from '../models/IHeroModel';
+import { IHeroModel } from '../../models/IHeroModel';
 import { Observable } from 'rxjs';
-import { HeroService } from '../services/hero.service';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'app-heroes',

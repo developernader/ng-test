@@ -5,7 +5,15 @@ import { IHeroModel } from '../models/IHeroModel';
   providedIn: 'root'
 })
 export class HeroService {
-  heroList: IHeroModel[] = [];
+  heroList: IHeroModel[] = [
+    {
+      heroName: 'patrick',
+      heroAge: 22,
+      heroEmail: 'patrick@gmail.com',
+      heroGender: 'male',
+      heroColor: ['green','purple']
+    }
+  ];
   //heroListChanged = new EventEmitter<IHeroModel>();
   selectedHeros: IHeroModel[] = [];
 

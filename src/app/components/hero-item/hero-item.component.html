@@ -10,13 +10,19 @@
 
       <div class="card-body">
         <h5 class="card-title">New hero added
-          <span appYoungHero [age]="heroData.heroAge" [gender]="heroData.heroGender" [name]="heroData.heroName">
+         
+          <span appYoungHero 
+          [age]="heroData.heroAge" 
+          [gender]="heroData.heroGender" 
+          [name]="heroData.heroName" 
+          [routerLink]="['/hero',heroData.heroName]" class="cursor-pointer">
             {{
             heroData.heroName
             | jokes : heroData.heroAge : "TEST PARAM"
             | uppercase
             }}
           </span>
+
           {{ title }} - {{ heroData.heroAge }}
         </h5>
 
