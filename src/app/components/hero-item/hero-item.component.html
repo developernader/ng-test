@@ -15,7 +15,7 @@
           [age]="heroData.heroAge" 
           [gender]="heroData.heroGender" 
           [name]="heroData.heroName" 
-          [routerLink]="['/hero',heroData.heroName]" class="cursor-pointer">
+          [routerLink]="['/hero',heroData.heroName,'basic']" class="cursor-pointer">
             {{
             heroData.heroName
             | jokes : heroData.heroAge : "TEST PARAM"
@@ -26,10 +26,10 @@
           {{ title }} - {{ heroData.heroAge }}
         </h5>
 
-
         <p>{{heroData.heroColor.toString()}}</p>
-        <a href="#" class="btn btn-primary" (click)="acceptHero()">Accept</a>
+        <a class="btn btn-primary" (click)="acceptHero()">Accept</a>
         <button class="btn btn-danger ms-2">Reject</button>
+
       </div>
     </div>
 

@@ -11,24 +11,28 @@ import { HeroService } from '../../services/hero.service';
 })
 export class HeroesComponent implements OnInit {
   herosList: IHeroModel[] = [];
-  @ViewChild('titleEl') titleEl!: ElementRef;
+  title ="New hero added.";
   searchText: string = '';
 
   constructor(private heroService: HeroService) {
     // this.herosList.push({ heroName: 'Yasser Ali Mohamed', heroAge: 10 });
   }
+  
   ngOnInit(): void {
-    // this.heroService.heroListChanged.subscribe(data => {
-    //   this.herosList = data as any;
-    // })
+    this.heroService.heroListChanged.subscribe(data => {
+      this.herosList = data as any;
+    })
     this.herosList = this.heroService.getHeros();
   }
+  
   mainHero = new Observable((subs) => {
-
     setTimeout(() => {
       subs.next('suberman');
     }, 2000);
-
   });
 
+  changeTitle()
+  {
+    this.title = 'New hero changed!!!';
+  }
 }

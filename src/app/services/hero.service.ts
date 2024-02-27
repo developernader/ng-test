@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { IHeroModel } from '../models/IHeroModel';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +12,37 @@ export class HeroService {
       heroAge: 22,
       heroEmail: 'patrick@gmail.com',
       heroGender: 'male',
-      heroColor: ['green','purple']
+      heroColor: ['green', 'purple']
     }
   ];
-  //heroListChanged = new EventEmitter<IHeroModel>();
+
   selectedHeros: IHeroModel[] = [];
+  heroListChanged = new EventEmitter<IHeroModel[]>();
 
-  constructor() { }
+  constructor(private toaster: ToastrService) { }
 
-  addHero(hero: IHeroModel) {
-    this.heroList.push(hero);
-    //this.heroListChanged.emit(this.heroList as any);
+  addHero(hero: IHeroModel){
+    if (this.heroList.find(obj => obj.heroName.trim().toLowerCase() == hero.heroName.trim().toLocaleLowerCase())) {
+      this.toaster.error('Hero name already exist!');
+      return false;
+    }
+    return null;
   }
 
   addSelectedHero(hero: IHeroModel) {
     this.selectedHeros.push(hero);
-    //console.log('selectedHeros' , this.selectedHeros);
   }
+
+  removeSelectedHero(hero: IHeroModel) {
+    this.selectedHeros = this.selectedHeros.filter(o => o.heroName !== hero.heroName);
+    this.heroList = this.heroList.filter(x => x.heroName !== hero.heroName);
+    this.heroListChanged.emit(this.heroList);
+  }
+
   getHeros(): IHeroModel[] {
     return this.heroList;
   }
+
+
+
 }

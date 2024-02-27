@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IHeroModel } from 'src/app/models/IHeroModel';
+import { HeroService } from 'src/app/services/hero.service';
 
 @Component({
   selector: 'app-hero-details',
@@ -7,17 +9,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./hero-details.component.css']
 })
 export class HeroDetailsComponent implements OnInit {
-  constructor(private acRoute: ActivatedRoute) { }
 
-  name1 = '';
-  name2 = '';
-
+  constructor() { }
   ngOnInit(): void {
-    this.name1 = this.acRoute.snapshot.params['heroName'];
 
-    this.acRoute.params.subscribe(prm => {
-      this.name2 = prm['heroName'];
-    });
   }
-
 }

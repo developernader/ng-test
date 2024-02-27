@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomePageComponent } from './components/homePage/homePage.component';
 import { HeroDetailsComponent } from './components/hero-details/hero-details.component';
+import { HeroDetailsColorsComponent } from './components/hero-details/heroDetails-colors/heroDetails-colors.component';
+import { HeroDetailsBasicComponent } from './components/hero-details/heroDetails-basic/heroDetails-basic.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { HeroDetailsComponent } from './components/hero-details/hero-details.com
     ItemsDetailsComponent,
     HeroesComponent,
     HeroItemComponent,
+    HeroDetailsComponent,
     CreateHeroComponent,
     HomePageComponent,
+    HeroDetailsColorsComponent,
+    HeroDetailsBasicComponent,
     JokesPipe,
     HeroSearchPipe,
     YoungHeroDirective,
     HeroDropdownDirective,
-    HeroDetailsComponent
   ],
   imports: [
     BrowserModule,
